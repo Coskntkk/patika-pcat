@@ -1,76 +1,65 @@
-<%- include('partials/header'); -%>
+<%- include('partials/_header'); -%>
 
-<body>
-  <div class="tm-page-wrap mx-auto">
-    <div class="position-relative">
-      <div class="position-absolute tm-site-header">
-        <div class="container-fluid position-relative">
-          <div class="row">
-            <div class="col-5 col-md-8 ml-auto mr-0">
-              <div class="tm-site-nav">
-                <nav class="navbar navbar-expand-lg mr-0 ml-auto" id="tm-main-nav">
-                  <button class="navbar-toggler tm-bg-black py-2 px-3 mr-0 ml-auto collapsed" type="button" data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span>
-                      <i class="fas fa-bars tm-menu-closed-icon"></i>
-                      <i class="fas fa-times tm-menu-opened-icon"></i>
-                    </span>
-                  </button>
-                  <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
-                    <ul class="navbar-nav text-uppercase">
-                      <li class="nav-item active">
-                        <a class="nav-link tm-nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link tm-nav-link" href="/about">About</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link tm-nav-link" href="/contact">Contact</a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-            </div>
+<div class="tm-welcome-container tm-fixed-header tm-fixed-header-3">
+  <div class="text-center">
+    <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">
+      Talk to Us<br>about any question you have
+    </p>
+  </div>
+</div>
+
+<div id="tm-fixed-header-bg"></div> <!-- Header image -->
+</div>
+
+<!-- Page content -->
+<main>
+  <div class="container-fluid px-0">
+    <div class="mx-auto tm-content-container">
+      <div class="row mt-3 mb-5 pb-3">
+        <div class="col-12">
+          <div class="mx-auto tm-about-text-container px-3">
+            <h2 class="tm-page-title mb-4 tm-text-primary">Add new photo</h2>
+            <p class="mb-4">
+              Integer sit amet odio id libero tincidunt dignissim in eget arcu. Aliquam tristique ut magna sit amet tincidunt. Sed tempor tellus nulla, molestie luctus lectus tincidunt id. You are <u>not allowed</u> to re-distribute the template ZIP
+              file on any template collection website.
+            </p>
+            <p class="mb-4">Video Catalog is a free website template for your business. This is 100% free Bootstrap v4.4.1 layout. You can modify and adapt this template for your CMS websites. You can use it for commercial or non-commercial work. If
+              you wish to suport <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-primary">TemplateMo</a>, please contact us.</p>
           </div>
         </div>
       </div>
+      <div class="mx-auto pb-3 tm-about-text-container px-3">
+        <div class="row">
+          <div class="col-lg-10 offset-1 mb-5">
+            <form id="contact-form" action="/photo" method="POST" class="tm-contact-form" enctype="multipart/form-data">
 
-      <div id="tm-video-container">
-        <video autoplay muted loop id="tm-video">
-          <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
-          <source src="video/wheat-field.mp4" type="video/mp4">
-        </video>
+              <div class="form-group">
+                <input type="text" name="title" class="form-control rounded-0" placeholder="Title" required="" />
+              </div>
+
+              <div class="form-group">
+                <textarea rows="8" name="description" class="form-control rounded-0" placeholder="Description" required=""></textarea>
+              </div>
+
+              <div class="form-group">
+                <input type="file" name="image" class="form-control-file rounded-0">
+              </div>
+
+              <div class="form-group mb-0">
+                <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"><span>Submit</span></button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
       </div>
-
-      <i id="tm-video-control-button" class="fas fa-plus"></i>
     </div>
 
-    <div class="container-fluid mx-auto col-6" style="margin: 5% auto;">
-      <h1><strong>Create a new post</strong></h1>
-      <form class="" action="/posts" method="post">
-        <div class="mb-3">
-          <label for="postTitle" class="form-label">Post Title</label>
-          <input type="text" class="form-control" name="postTitle" id="postTitle" placeholder="Project Name" autocomplete="off">
-        </div>
-        <div class="mb-3">
-          <label for="postContent" class="form-label">Post Content</label>
-          <textarea class="form-control" id="postContent" name="postContent" rows="3" placeholder="Project Explanation"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="postImgUrl" class="form-label">Image URL</label>
-          <input type="text" class="form-control" id="postImgUrl" name="postImgUrl" placeholder="URL for post image" autocomplete="off">
-        </div>
-        <button type="submit" class="btn btn-success" name="createPost">Create</button>
-      </form>
-    </div>
+    <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="img/contact-2.jpg"></div>
 
-    <%- include('partials/footer'); -%>
 
-  </div> <!-- .tm-page-wrap -->
+  </div>
+</main>
 
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/pages/index.js" charset="utf-8"></script>
-</body>
-
-</html>
+<div class="container-fluid tm-content-container mx-auto pt-4">
+  <%- include('partials/_footer'); -%>

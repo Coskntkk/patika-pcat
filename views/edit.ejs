@@ -1,102 +1,60 @@
-<%- include('partials/header'); -%>
+<%- include('partials/_header'); -%>
 
-<body>
-  <div class="tm-page-wrap mx-auto">
-    <div class="position-relative">
-      <div class="position-absolute tm-site-header">
-        <div class="container-fluid position-relative">
-          <div class="row">
-            <div class="col-5 col-md-8 ml-auto mr-0">
-              <div class="tm-site-nav">
-                <nav class="navbar navbar-expand-lg mr-0 ml-auto" id="tm-main-nav">
-                  <button class="navbar-toggler tm-bg-black py-2 px-3 mr-0 ml-auto collapsed" type="button" data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span>
-                      <i class="fas fa-bars tm-menu-closed-icon"></i>
-                      <i class="fas fa-times tm-menu-opened-icon"></i>
-                    </span>
-                  </button>
-                  <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
-                    <ul class="navbar-nav text-uppercase">
-                      <li class="nav-item active">
-                        <a class="nav-link tm-nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link tm-nav-link" href="/about">About</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link tm-nav-link" href="/contact">Contact</a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
+<div class="tm-welcome-container tm-fixed-header tm-fixed-header-3">
+  <div class="text-center">
+    <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">
+      Talk to Us<br>about any question you have
+    </p>
+  </div>
+</div>
+
+<div id="tm-fixed-header-bg"></div> <!-- Header image -->
+</div>
+
+<!-- Page content -->
+<main>
+  <div class="container-fluid px-0">
+    <div class="mx-auto tm-content-container">
+      <div class="row mt-3 mb-5 pb-3">
+        <div class="col-12">
+          <div class="mx-auto tm-about-text-container px-3">
+            <h2 class="tm-page-title mb-4 tm-text-primary">Edit photo</h2>
+            <div class="row mb-5 pb-4">
+                <div class="col-10 offset-1">
+                    <img src="<%= photo.image %>" alt="Image" class="img-fluid tm-catalog-item-img">
+                </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="tm-welcome-container text-center text-white">
-        <div class="tm-welcome-container-inner">
-          <p class="tm-welcome-text mb-1 text-white">Video Catalog is brought to you by TemplateMo.</p>
-          <p class="tm-welcome-text mb-5 text-white">This is a full-width video banner.</p>
-          <a href="#content" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
-            <span>Discover</span>
-          </a>
-        </div>
-      </div>
+      <div class="mx-auto pb-3 tm-about-text-container px-3">
+        <div class="row">
+          <div class="col-lg-10 offset-1 mb-5">
+            <form id="contact-form" action="/photo/<%=photo._id%>?_method=PUT" method="POST" class="tm-contact-form" enctype="multipart/form-data">
 
-      <div id="tm-video-container">
-        <video autoplay muted loop id="tm-video">
-          <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
-          <source src="video/wheat-field.mp4" type="video/mp4">
-        </video>
-      </div>
+              <div class="form-group">
+                <input type="text" name="title" value="<%=photo.title%>" class="form-control rounded-0" placeholder="Title" required="" />
+              </div>
 
-      <i id="tm-video-control-button" class="fas fa-plus"></i>
-    </div>
+              <div class="form-group">
+                <textarea rows="8" name="description" value="" class="form-control rounded-0" placeholder="Description" required=""><%=photo.description%></textarea>
+              </div>
 
-    <main class="container-fluid mx-auto col-6" style="margin: 5% auto;">
-      <div class="row mb-5 pb-4">
-        <div class="col-12">
-          <img src="<%= post.imageUrl %>" alt="Image" class="img-fluid tm-catalog-item-img">
-        </div>
-      </div>
-      <div class="row mb-5 pb-5">
-        <div class="col-xl-8 col-lg-7">
-          <!-- Video description -->
-          <div class="tm-video-description-box">
-            <h2 class="mb-5 tm-video-title"> <%= post.title %></h2>
-            <p class="mb-4"> <%= post.content %> </p>
+              <div class="form-group mb-0">
+                <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"><span>Submit</span></button>
+              </div>
+              
+            </form>
           </div>
         </div>
       </div>
-    </main>
-
-    <div class="container-fluid mx-auto col-6" style="margin: 5% auto;">
-      <h1><strong>Update this post</strong></h1>
-      <form action="/posts/<%= post._id %>/edit" method="post">
-        <div class="mb-3">
-          <label for="postTitle" class="form-label">Post Title</label>
-          <input type="text" class="form-control" name="postTitle" id="postTitle" value="<%= post.title %>" autocomplete="off">
-        </div>
-        <div class="mb-3">
-          <label for="postContent" class="form-label">Post Content</label>
-          <textarea class="form-control" id="postContent" name="postContent" rows="3" value="<%= post.content %>"></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="postImgUrl" class="form-label">Image URL</label>
-          <input type="text" class="form-control" id="postImgUrl" name="postImgUrl" value="<%= post.imageUrl %>" autocomplete="off">
-        </div>
-        <button type="submit" class="adm-button" name="createPost">Update</button>
-      </form>
     </div>
 
-    <%- include('partials/footer'); -%>
+    <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="img/contact-2.jpg"></div>
 
-  </div> <!-- .tm-page-wrap -->
 
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/pages/index.js" charset="utf-8"></script>
-</body>
+  </div>
+</main>
 
-</html>
+<div class="container-fluid tm-content-container mx-auto pt-4">
+  <%- include('partials/_footer'); -%>
